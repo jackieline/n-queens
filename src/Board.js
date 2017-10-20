@@ -125,11 +125,11 @@
       //declare count for conflicts
       var colConflicts = 0;
       //get all rows using helper function with this 
-      var rows = this.rows();
+      // var rows = this.rows();
       //iterate through static column by incrementing rows
-      for (var i = 0; i < rows.length; i++) {
+      for (var i = 0; i < this.get('n'); i++) {
         //check if piece is at space
-        if (rows[i][colIndex] === 1) {
+        if (this.get(i)[colIndex] === 1) {
           //increment count
           colConflicts++; 
           //check if conflicts exceed 1
@@ -172,14 +172,14 @@
       //use input to find starting point
       // var numOfMax = this.get('n');
       //get rows
-      var rows = this.rows();
+      // var rows = this.rows();
       //store majorDiagonalCol index
       var start = majorDiagonalColumnIndexAtFirstRow;
       //for rows maj diagonals are positive, then row index is always 0
-      if (majorDiagonalColumnIndexAtFirstRow >= 0) { 
-        for (var i = 0; i < rows.length; i++) {
+      if (start >= 0) { 
+        for (var i = 0; i < this.get('n'); i++) {
           //if piece exists
-          if (rows[i][start] === 1) {
+          if (this.get(i)[start] === 1) {
             //increment counter
             majDiagCon++;
             //if counter greater than 1
@@ -195,8 +195,8 @@
         if (start < 0) {
           start = start * - 1;
           var columnInc = 0;
-          for (var j = start; j < rows.length; j++) {
-            if (rows[j][columnInc] === 1) {
+          for (var j = start; j < this.get('n'); j++) {
+            if (this.get(j)[columnInc] === 1) {
               majDiagCon++;
               //if counter greater than 1
               if (majDiagCon > 1) {
@@ -238,14 +238,14 @@
       //declare count for conflicts
       var minConflicts = 0;
       //get all rows using helper function with this 
-      var rows = this.rows();
+      // var rows = this.rows();
       // var rowDoub = rows * 2;
       var y = minorDiagonalColumnIndexAtFirstRow;
       //iterate through minor diagonals by incrementing rows 
       //and decrementing columns
-      for (var x = 0; x < rows.length; x++) {
+      for (var x = 0; x < this.get('n'); x++) {
         //check if piece is at space
-        if (rows[x][y] === 1) {
+        if (this.get(x)[y] === 1) {
           //increment count
           minConflicts++; 
           //check if conflicts exceed 1
